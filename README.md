@@ -19,11 +19,16 @@ application itself:
 | `-Dterminal.keepMinecraftFormatting=true` | Output raw Minecraft formatting codes to the console output. |
 
 ## Usage
+0. Add JitPack repository to your build configuration file first.
+   (See [JitPack Website](https://jitpack.io) for manual)
+
 1. Add a dependency on TerminalConsoleAppender:
 
     ```
-    net.minecrell:terminalconsoleappender:1.3.0
+    com.github.SNWCreations.TerminalConsoleAppender:1.3.1
     ```
+
+    
 
     If you package all dependencies into a single JAR file, ensure that all transitive dependencies are included:
 
