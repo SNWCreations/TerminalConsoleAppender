@@ -105,6 +105,12 @@ publishing {
                         name("Minecrell")
                         email("minecrell@minecrell.net")
                     }
+                    
+                    developer {
+                        id("snwcreations")
+                        name("SNWCreations")
+                        email("snwcreations@qq.com")
+                    }
                 }
 
                 licenses {
