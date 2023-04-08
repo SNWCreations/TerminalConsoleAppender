@@ -24,7 +24,6 @@
 
 package net.minecrell.terminalconsole;
 
-import org.apache.logging.log4j.LogManager;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jline.reader.Completer;
 import org.jline.reader.EndOfFileException;
@@ -134,16 +133,12 @@ public abstract class SimpleTerminalConsole {
      *     <li>The input stream is closed.</li>
      * </ul>
      */
-    public void start() {
-        try {
-            final @Nullable Terminal terminal = TerminalConsoleAppender.getTerminal();
-            if (terminal != null) {
-                readCommands(terminal);
-            } else {
-                readCommands(System.in);
-            }
-        } catch (IOException e) {
-            LogManager.getLogger("TerminalConsole").error("Failed to read console input", e);
+    public void start() throws IOException {
+        final @Nullable Terminal terminal = TerminalConsoleAppender.getTerminal();
+        if (terminal != null) {
+            readCommands(terminal);
+        } else {
+            readCommands(System.in);
         }
     }
 
