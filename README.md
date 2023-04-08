@@ -25,7 +25,7 @@ application itself:
 1. Add a dependency on TerminalConsoleAppender:
 
     ```
-    com.github.SNWCreations.TerminalConsoleAppender:1.3.1
+    com.github.SNWCreations.TerminalConsoleAppender:1.3.5
     ```
 
     
