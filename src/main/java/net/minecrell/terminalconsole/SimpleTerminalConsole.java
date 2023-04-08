@@ -132,6 +132,8 @@ public abstract class SimpleTerminalConsole {
      *     pressing CTRL+C)</li>
      *     <li>The input stream is closed.</li>
      * </ul>
+     * 
+     * @throws IOException Thrown if an I/O error occurred
      */
     public void start() throws IOException {
         final @Nullable Terminal terminal = TerminalConsoleAppender.getTerminal();
