@@ -1,7 +1,6 @@
 plugins {
     `java-library`
     `maven-publish`
-    id("io.codearte.nexus-staging") version "0.30.0"
     id("org.cadixdev.licenser") version "0.6.1"
 }
 
@@ -69,6 +68,60 @@ tasks.named<JavaCompile>("compileIntTestJava") {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+
+publishing {
+    publications {
+        register<MavenPublication>("mavenJava") {
+            from(components["java"])
+            artifactId = project.name.toLowerCase()
+
+            pom {
+                val url: String by project
+                name(project.name)
+                description(project.description!!)
+                url(url)
+
+                scm {
+                    url(url)
+                    connection("scm:git:$url.git")
+                    developerConnection.set(connection)
+                }
+
+                issueManagement {
+                    system("GitHub Issues")
+                    url("$url/issues")
+                }
+
+                developers {
+                    developer {
+                        id("minecrell")
+                        name("Minecrell")
+                        email("minecrell@minecrell.net")
+                    }
+                    
+                    developer {
+                        id("snwcreations")
+                        name("SNWCreations")
+                        email("snwcreations@qq.com")
+                    }
+                }
+
+                licenses {
+                    license {
+                        name("MIT License")
+                        url("https://opensource.org/licenses/MIT")
+                        distribution("repo")
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
 }
 
 tasks.check { dependsOn(tasks.named("compileIntTestJava")) }
